@@ -16,7 +16,31 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: gcr.io/google-samples/hello-app:1.0 
+        image: gcr.io/google-samples/hello-app:1.0
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html-volume
+        configMap:
+          name: java-app-html
 
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: java-app-html
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Welcome to Java App on FluxCD!</title>
+    </head>
+    <body>
+        <h1>Hello, FluxCD is successfully deploying this Java app!</h1>
+        <p>This is a test webpage served from an NGINX container.</p>
+    </body>
+    </html>
