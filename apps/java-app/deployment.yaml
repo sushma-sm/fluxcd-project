@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: gcr.io/Project_id/java-app:latest  
+        image: gcr.io/google-samples/hello-app:1.0 
         ports:
         - containerPort: 8080
 
