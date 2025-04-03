@@ -3,11 +3,10 @@ kind: Service
 metadata:
   name: java-app-service
 spec:
-  type: LoadBalancer
   selector:
     app: java-app
+  type: LoadBalancer  # Change to NodePort if needed
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8080
- 
